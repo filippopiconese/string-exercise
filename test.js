@@ -35,11 +35,24 @@ test('support different delimiters n. 2', t => {
 })
 
 test('negative numbers are not allowed n. 1', t => {
-  const errorMessage = t.throws(() => { stringCalculator('1,4,-1') }) // { message: `negatives not allowed: -1` }, `The string return ${stringCalculator('1,4,-1')} instead of negatives not allowed: -1`)
+  const errorMessage = t.throws(() => { stringCalculator('1,4,-1') })
   t.true(errorMessage.message === 'negatives not allowed: -1')
 })
 
 test('negative numbers are not allowed n. 2', t => {
-  const errorMessage = t.throws(() => { stringCalculator('//-\n1-4-1--6--5') }) // { message: `negatives not allowed: -1` }, `The string return ${stringCalculator('1,4,-1')} instead of negatives not allowed: -1`)
+  const errorMessage = t.throws(() => { stringCalculator('//-\n1-4-1--6--5') })
   t.true(errorMessage.message === 'negatives not allowed: -6,-5')
+})
+
+test('numbers bigger than 1000 should be ignored n. 1', t => {
+  t.is(stringCalculator('//-\n1000-2-5\n1111-9'), 16, `The string return ${stringCalculator('//-\n1000-2-5\n1111-9')} instead of 16`)
+})
+
+test('negative numbers are not allowed n. 2', t => {
+  const errorMessage = t.throws(() => { stringCalculator('//-\n1-4--1001-6-5') })
+  t.true(errorMessage.message === 'negatives not allowed: -1001')
+})
+
+test('numbers bigger than 1000 should be ignored n. 1', t => {
+  t.is(stringCalculator('1000,1100'), 0, `The string return ${stringCalculator('1000,1100')} instead of 0`)
 })

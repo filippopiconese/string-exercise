@@ -28,7 +28,9 @@ module.exports = function add (stringWithNumbers) {
       // throw new Error(`negatives not allowed: -${numbers[index + 1]}`)
     }
 
-    total = total + parseInt(number)
+    if (number < 1000) {
+      total = total + parseInt(number)
+    }
   })
 
   if (negativeNumbers.length !== 0) {
