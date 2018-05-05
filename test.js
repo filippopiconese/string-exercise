@@ -26,10 +26,20 @@ test('handle new lines between numbers - should not work', t => {
   t.is(stringCalculator('1,\n'), NaN, `The string return ${stringCalculator('1,\n')} instead of NaN`)
 })
 
-test('support different delimiters - 1', t => {
+test('support different delimiters n. 1', t => {
   t.is(stringCalculator('//;\n1;2'), 3, `The string return ${stringCalculator('//;\n1;2')} instead of 3`)
 })
 
-test('support different delimiters - 2', t => {
+test('support different delimiters n. 2', t => {
   t.is(stringCalculator('//-\n1-2-5\n7-9'), 24, `The string return ${stringCalculator('//-\n1-2-5\n7-9')} instead of 24`)
+})
+
+test('negative numbers are not allowed n. 1', t => {
+  const errorMessage = t.throws(() => { stringCalculator('1,4,-1') }) // { message: `negatives not allowed: -1` }, `The string return ${stringCalculator('1,4,-1')} instead of negatives not allowed: -1`)
+  t.true(errorMessage.message === 'negatives not allowed: -1')
+})
+
+test('negative numbers are not allowed n. 2', t => {
+  const errorMessage = t.throws(() => { stringCalculator('//-\n1-4-1--6--5') }) // { message: `negatives not allowed: -1` }, `The string return ${stringCalculator('1,4,-1')} instead of negatives not allowed: -1`)
+  t.true(errorMessage.message === 'negatives not allowed: -6,-5')
 })

@@ -15,10 +15,25 @@ module.exports = function add (stringWithNumbers) {
 
   const stringWithCommas = stringWithNumbersCopies.replace('\n', delimiter)
   const numbers = stringWithCommas.split(delimiter)
+  let negativeNumbers = []
 
-  numbers.forEach(number => {
+  numbers.forEach((number, index) => {
+    if (delimiter !== '-' && number.includes('-')) {
+      negativeNumbers.push(parseInt(number))
+      // throw new Error(`negatives not allowed: ${number}`)
+    }
+
+    if (delimiter === '-' && !number) { // we are in this situation -> b = 1-2-3--4 => 1,2,3,,4 => negatives not allowed -4
+      negativeNumbers.push(parseInt(-(numbers[index + 1])))
+      // throw new Error(`negatives not allowed: -${numbers[index + 1]}`)
+    }
+
     total = total + parseInt(number)
   })
+
+  if (negativeNumbers.length !== 0) {
+    throw new Error(`negatives not allowed: ${negativeNumbers}`)
+  }
 
   return total
 }
