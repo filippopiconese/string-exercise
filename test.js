@@ -17,3 +17,11 @@ test('String with two values return the input values', t => {
 test('Handle an unknown amount of numbers', t => {
   t.is(stringCalculator('1,2,3,4,5,6,7,8'), 36, `The string return ${stringCalculator('1,2,3,4,5,6,7,8')} instead of 36`)
 })
+
+test('handle new lines between numbers', t => {
+  t.is(stringCalculator('1\n2,3'), 6, `The string return ${stringCalculator('1\n2,3')} instead of 6`)
+})
+
+test('should not work', t => {
+  t.is(stringCalculator('1,\n'), NaN, `The string return ${stringCalculator('1,\n')} instead of NaN`)
+})

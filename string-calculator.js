@@ -5,7 +5,8 @@ module.exports = function add (stringWithNumbers) {
     return total
   }
 
-  const numbers = stringWithNumbers.split(',')
+  const stringWithCommas = stringWithNumbers.replace('\n', ',')
+  const numbers = stringWithCommas.split(',')
 
   numbers.forEach(number => {
     total = total + parseInt(number)
