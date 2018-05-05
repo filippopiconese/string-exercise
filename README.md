@@ -4,9 +4,11 @@ Make a test-first exercise, the topig is "string containing numbers"
 
 # usage
 
-string-calculator will return the sum of the string with numbers in input
+Import string-calculator into your program.
 
-This string can contain:
+This script will return the sum of a string with numbers given as input
+
+The string can contain:
 
 * An empty string (should return 0)
 * A string with one number
@@ -15,3 +17,18 @@ This string can contain:
 * A string with multiple numbers, separated by comma or newline expression (\n)
 * A string with multiple numbers, separated by a different delimiter with this syntax -> "//[delimiter]\n[numbers...]"
 * Negative numbers are not allowed, function will throw an error message with wrong numbers
+* Big numbers will be ignored (>1000)
+
+# test
+
+AvaJS test
+
+To run the test write in your terminal
+
+`npm test`
+
+The test file is inside `test.js`
+
+# programming language
+
+JavaScript
