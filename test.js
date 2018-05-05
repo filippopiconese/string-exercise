@@ -13,3 +13,7 @@ test('String with value return the input value', t => {
 test('String with two values return the input values', t => {
   t.is(stringCalculator('1,2'), 3, `The string return ${stringCalculator('1,2')} instead of 3`)
 })
+
+test('Handle an unknown amount of numbers', t => {
+  t.is(stringCalculator('1,2,3,4,5,6,7,8'), 36, `The string return ${stringCalculator('1,2,3,4,5,6,7,8')} instead of 36`)
+})
