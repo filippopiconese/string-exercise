@@ -6,11 +6,11 @@ test('Empty string return 0', t => {
   t.is(stringCalculator(''), 0, `The string is not empty but return ${stringCalculator('')}`)
 })
 
-test('String with value return the input value', t => {
+test('String with 1 value return the input value', t => {
   t.is(stringCalculator('1'), 1, `The string return ${stringCalculator('1')} instead of 1`)
 })
 
-test('String with two values return the input values', t => {
+test('String with 2 values return the input values', t => {
   t.is(stringCalculator('1,2'), 3, `The string return ${stringCalculator('1,2')} instead of 3`)
 })
 
@@ -22,6 +22,14 @@ test('handle new lines between numbers', t => {
   t.is(stringCalculator('1\n2,3'), 6, `The string return ${stringCalculator('1\n2,3')} instead of 6`)
 })
 
-test('should not work', t => {
+test('handle new lines between numbers - should not work', t => {
   t.is(stringCalculator('1,\n'), NaN, `The string return ${stringCalculator('1,\n')} instead of NaN`)
+})
+
+test('support different delimiters - 1', t => {
+  t.is(stringCalculator('//;\n1;2'), 3, `The string return ${stringCalculator('//;\n1;2')} instead of 3`)
+})
+
+test('support different delimiters - 2', t => {
+  t.is(stringCalculator('//-\n1-2-5\n7-9'), 24, `The string return ${stringCalculator('//-\n1-2-5\n7-9')} instead of 24`)
 })
