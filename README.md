@@ -1,6 +1,6 @@
 # string-exercise
 
-Make a test-first exercise, the topig is "string containing numbers"
+Make a test-first exercise, the topic is "string containing numbers"
 
 # usage
 
